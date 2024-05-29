@@ -1,7 +1,14 @@
 using Amazon.S3;
+using MvcCoreApiPeliculasAWS7.Helpers;
+using MvcCoreApiPeliculasAWS7.Models;
 using MvcCoreApiPeliculasAWS7.Services;
+using Newtonsoft.Json;
 
 var builder = WebApplication.CreateBuilder(args);
+
+string jsonSecrets = await HelperSecretManager.GetSecretsAsync();
+KeysModels keysModels = JsonConvert.DeserializeObject<KeysModels>(jsonSecrets);
+builder.Services.AddSingleton<KeysModels>(x => keysModels);
 
 // Add services to the container.
 builder.Services.AddAWSService<IAmazonS3>();

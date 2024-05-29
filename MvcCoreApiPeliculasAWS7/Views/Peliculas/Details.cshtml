@@ -1,7 +1,9 @@
 ﻿@model Pelicula
 @{
-    string UrlBucket = configuration.GetValue<string>("AWS:S3BucketUrl");
+    //string UrlBucket = configuration.GetValue<string>("AWS:S3BucketUrl");
+    string urlBucket = keysModel.BucketUrl;
 }
+
 
 <p>
     <a asp-controller="Peliculas"
@@ -9,7 +11,7 @@
 </p>
 
 <div class="card" style="width: 18rem;">
-    <img src="@UrlBucket@Model.Foto" class="card-img-top" alt="...">
+    <img src="@urlBucket@Model.Foto" class="card-img-top" alt="...">
     <div class="card-body">
         <h5 class="card-title">@Model.Titulo</h5>
         <p class="card-text">@Model.Genero</p>
