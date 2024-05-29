@@ -1,3 +1,8 @@
-﻿@using MvcCoreApiPeliculasAWS7
+﻿@inject IConfiguration configuration
+@{
+    string UrlBucket = configuration.GetValue<string>("AWS:S3BucketUrl");
+}
+@using MvcCoreApiPeliculasAWS7
 @using MvcCoreApiPeliculasAWS7.Models
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+

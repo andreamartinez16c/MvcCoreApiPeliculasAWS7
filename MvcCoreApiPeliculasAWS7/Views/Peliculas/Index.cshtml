@@ -1,4 +1,7 @@
 ﻿@model List<Pelicula>
+@{
+    string UrlBucket = configuration.GetValue<string>("AWS:S3BucketUrl");
+}
 
 <h1>Peliculas AWS Api Gateway</h1>
 
@@ -22,7 +25,7 @@
             <tr>
                 <td>@peli.Titulo</td>
                 <td>
-                    <img src="~/images/@peli.Foto"
+                    <img src="@UrlBucket@peli.Foto"
                     style="width:70px; height: 80px"/>
                 </td>
                 <td>
